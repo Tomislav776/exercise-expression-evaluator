@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "ef7d1aec-834f-4b38-b303-17998d0ef7bc",
+		"name": "Leapwise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2090798"
+	},
+	"item": [
+		{
+			"name": "Create Expression",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let response;",
+							"try {",
+							"    response = pm.response.json();",
+							"} catch (ex) {",
+							"    console.error(\"Exception occured while trying to parse response as JSON!\");",
+							"}",
+							"",
+							"postman.setEnvironmentVariable('expressionIdentifier', response.response);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name\",\n    \"expression\": \"(customer.firstName == \\\"JOHN\\\" && customer.salary < 100) OR (customer.address != null && customer.address.city == \\\"Washington\\\")\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/expression",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"expression"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evaluate Expression",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identifier\": {{expressionIdentifier}},\n    \"json\": {\n        \"customer\": {\n            \"firstName\": \"JOHN\",\n            \"lastName\": \"DOE\",\n            \"address\": {\n                \"city\": \"Chicago\",\n                \"zipCode\": 1234,\n                \"street\": \"56th\",\n                \"houseNumber\": 2345\n            },\n            \"salary\": 99,\n            \"type\": \"BUSINESS\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/evaluate?expressionIdentifier={{expressionIdentifier}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"evaluate"
+					],
+					"query": [
+						{
+							"key": "expressionIdentifier",
+							"value": "{{expressionIdentifier}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
