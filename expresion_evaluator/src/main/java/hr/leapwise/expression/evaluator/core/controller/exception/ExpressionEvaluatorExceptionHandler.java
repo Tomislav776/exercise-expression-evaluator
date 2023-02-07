@@ -28,6 +28,24 @@ public class ExpressionEvaluatorExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.NOT_ACCEPTABLE);
     }
 
+    @ExceptionHandler(NotValueException.class)
+    public ResponseEntity<ExceptionResponse> handleNotValueException(NotValueException exception) {
+        ExceptionResponse response = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), exception.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ValueCanNotBeNullException.class)
+    public ResponseEntity<ExceptionResponse> handleValueCanNotBeNullException(ValueCanNotBeNullException exception) {
+        ExceptionResponse response = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), exception.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ValueIsNotNumberException.class)
+    public ResponseEntity<ExceptionResponse> handleValueIsNotNumberException(ValueIsNotNumberException exception) {
+        ExceptionResponse response = new ExceptionResponse(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), exception.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException exception) {

@@ -1,4 +1,4 @@
-package hr.leapwise.expression.evaluator.core.service.integration;
+package hr.leapwise.expression.evaluator.core.service.impl;
 
 import hr.leapwise.expression.evaluator.core.controller.exception.ExpressionNotFoundException;
 import hr.leapwise.expression.evaluator.core.service.ExpressionPersistenceService;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
-import static hr.leapwise.expression.evaluator.core.service.integration.ExpressionConfiguration.UUID_EXPRESSION_1;
+import static hr.leapwise.expression.evaluator.core.service.impl.ExpressionConfiguration.UUID_EXPRESSION_1;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 

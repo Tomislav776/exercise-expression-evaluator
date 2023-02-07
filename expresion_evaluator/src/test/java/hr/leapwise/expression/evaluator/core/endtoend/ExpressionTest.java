@@ -8,6 +8,7 @@ import hr.leapwise.expression.evaluator.core.controller.request.ExpressionReques
 import hr.leapwise.expression.evaluator.core.persistence.repository.ExpressionRepository;
 import hr.leapwise.expression.evaluator.core.service.ExpressionEvaluatorService;
 import hr.leapwise.expression.evaluator.core.service.ExpressionPersistenceService;
+import hr.leapwise.expression.evaluator.core.service.logic.ShuntingYardParser;
 import hr.leapwise.expression.evaluator.core.stub.EvaluateRequestGenerator;
 import hr.leapwise.expression.evaluator.core.util.TestUtil;
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,8 @@ class ExpressionTest {
     private ExpressionPersistenceService expressionPersistenceService;
     @Autowired
     private ExpressionEvaluatorService expressionEvaluatorService;
+    @Autowired
+    private ShuntingYardParser shuntingYardParser;
 
     @Autowired
     ExpressionController expressionController;

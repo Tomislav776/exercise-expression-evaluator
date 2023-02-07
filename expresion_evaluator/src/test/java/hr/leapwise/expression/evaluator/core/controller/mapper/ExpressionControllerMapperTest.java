@@ -23,7 +23,7 @@ class ExpressionControllerMapperTest {
         ExpressionDto actual = expressionControllerMapper.mapToExpressionDto(expressionRequest);
 
         ExpressionDto expressionDtoExpected = new ExpressionDto("Test expression",
-                "(customer.firstName == \"JOHN\" && customer.salary < 100) || (customer.address != null && customer.address.city == \"Washington\")");
+                "(customer.firstName == \"JOHN\" && customer.salary < 100) OR (customer.address != null && customer.address.city == \"Washington\")");
 
         assertEquals(expressionDtoExpected, actual);
     }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExpressionPersistenceMapper {
 
-    public Expression mapToExpression(final ExpressionDto expressionDto) {
-        return new Expression(expressionDto.name(), expressionDto.expression());
+    public Expression mapToExpression(final String name, final String infixTokens) {
+        return new Expression(name, infixTokens);
     }
 
     public ExpressionDto mapToExpressionDto(final Expression expression) {

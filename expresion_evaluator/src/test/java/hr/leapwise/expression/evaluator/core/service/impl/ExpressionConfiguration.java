@@ -1,4 +1,4 @@
-package hr.leapwise.expression.evaluator.core.service.integration;
+package hr.leapwise.expression.evaluator.core.service.impl;
 
 import hr.leapwise.expression.evaluator.core.persistence.model.Expression;
 import hr.leapwise.expression.evaluator.core.persistence.repository.ExpressionRepository;
